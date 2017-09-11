@@ -1,0 +1,19 @@
+{
+  "name": "reactjs_mentoring2017",
+  "version": "1.0.0",
+  "description": "Educational project for Epam ReactJS Mentoring 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ARybakova/reactjs_mentoring2017.git"
+  },
+  "author": "Alevtina Rybakova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ARybakova/reactjs_mentoring2017/issues"
+  },
+  "homepage": "https://github.com/ARybakova/reactjs_mentoring2017#readme"
+}
