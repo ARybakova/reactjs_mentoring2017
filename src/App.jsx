@@ -1,9 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-    constructor(props) {
-        super (props);
-    }
     render() {
         return (
             <h1>Hello, World!</h1>
@@ -11,4 +9,11 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const init = function() {
+    ReactDOM.render(
+        <App/>,
+        document.getElementById('app')
+    );
+};
+
+export { init };
