@@ -4,7 +4,8 @@
   "description": "Educational project for Epam ReactJS Mentoring 2017",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/ARybakova/reactjs_mentoring2017/issues"
   },
-  "homepage": "https://github.com/ARybakova/reactjs_mentoring2017#readme"
+  "homepage": "https://github.com/ARybakova/reactjs_mentoring2017#readme",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.0",
+    "babel-preset-react": "6.24.1",
+    "html-webpack-plugin": "2.30.1",
+    "less": "2.7.2",
+    "webpack": "3.5.6"
+  },
+  "dependencies": {
+    "express": "4.15.4",
+    "react": "15.6.1",
+    "react-dom": "15.6.1"
+  }
 }
