@@ -1,0 +1,34 @@
+.movie {
+  display: inline-block;
+  margin: 0 50px 50px 0;
+  &_img {
+    height: 350px;
+    width: 245px;
+  }
+  &_info_row1 {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  &_info_row1,
+  &_info_row2 {
+    padding: 0 5px;
+  }
+  &_title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12pt;
+  }
+  &_release {
+    border: 1px solid @color-main-light-gray;
+    border-radius: 2px;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 0 7px;
+    margin: auto 0;
+  }
+  &_genre {
+    font-size: 9pt;
+    color: @color-main-light-gray;
+  }
+}

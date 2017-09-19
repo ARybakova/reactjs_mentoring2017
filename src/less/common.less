@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial' ,sans-serif;
+  color: @color-main-gray;
+}
+
+html, body, #app, .main {
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("./../images/header.jpg");
+  &_top_bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.netflix_label {
+  color: @color-main-red;
+  font-size: 16pt;
+  font-weight: bold;
+}

@@ -1,0 +1,71 @@
+.movie_header .header_top_bar {
+  margin-left: @size-side-gap;
+  margin-right: @size-side-gap;
+}
+.searchpage_btn {
+  background: @color-main-white;
+  color: @color-main-red;
+  border: 0;
+  height: 30px;
+  border-radius: 3px;
+  padding: 0 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10pt;
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    color: @color-main-light-red;
+  }
+}
+.movie_details {
+  display: flex;
+  color: @color-dark-white;
+  margin: 40px;
+  &_info {
+    margin-left: 60px;
+    padding-top: 30px;
+  }
+  &_title_container,
+  &_release_container {
+    display: flex;
+    align-items: center;
+  }
+  &_title {
+    color: @color-main-red;
+    font-size: 20pt;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+  &_rating {
+    color: @color-rating;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 30px;
+  }
+  &_genre {
+    margin-bottom: 15px;
+  }
+  &_release_container {
+    font-weight: bold;
+  }
+  &_release {
+    color: @color-main-white;
+    margin-right: 30px;
+  }
+  &_duration {
+    color: @color-main-white;
+  }
+  &_description {
+    margin: 30px 0;
+  }
+  &_director {
+    font-size: 10pt;
+    margin-bottom: 10px;
+  }
+  &_cast {
+    font-size: 10pt;
+  }
+}
