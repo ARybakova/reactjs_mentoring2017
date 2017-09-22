@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Movie = ( {movie} ) => (
+export const Movie = ({movie}) => (
     <div className="movie">
         <img src={movie.poster} className="movie_img"/>
         <div className="movie_info">

@@ -4,7 +4,6 @@ import { SearchPage } from './SearchPage.jsx';
 import { MoviePage } from './MoviePage.jsx';
 
 const App = () => (
-    //<MoviePage/>
     <SearchPage/>
 );
 

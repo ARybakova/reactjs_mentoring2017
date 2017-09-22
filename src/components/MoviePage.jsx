@@ -1,7 +1,7 @@
 import React from 'react';
 import data from './../data.json';
 import { MovieHeader } from './MovieHeader.jsx';
-import { Results } from './Results.jsx';
+import { MovieResults } from './MovieResults.jsx';
 import { Footer } from './Footer.jsx';
 
 export class MoviePage extends React.Component {
@@ -18,7 +18,7 @@ export class MoviePage extends React.Component {
                 <MovieHeader
                     movie={this.state.movie}
                 />
-                <Results
+                <MovieResults
                     data={this.state.data.filter( (a) => a.director.toLowerCase() === this.state.movie.director.toLowerCase() )}
                     director={this.state.movie.director}
                 />

@@ -1,7 +1,7 @@
 import React from 'react';
 import data from './../data.json';
 import { SearchHeader } from './SearchHeader.jsx';
-import { Results } from './Results.jsx';
+import { SearchResults } from './SearchResults.jsx';
 import { Footer } from './Footer.jsx';
 
 export class SearchPage extends React.Component {
@@ -22,7 +22,7 @@ export class SearchPage extends React.Component {
                 <SearchHeader
                     searchByParameter={this.searchByParameter.bind(this)}
                 />
-                <Results
+                <SearchResults
                     data={this.state.data}
                 />
                 <Footer/>
