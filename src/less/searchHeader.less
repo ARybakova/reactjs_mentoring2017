@@ -1,0 +1,74 @@
+.search {
+  &_header {
+    padding: 0 @size-side-gap;
+  }
+  &_title {
+    color: @color-main-white;
+    text-transform: uppercase;
+    font-size: 16pt;
+    margin: 40px 0 15px;
+  }
+  &_field {
+    width: ~"calc(100% - 20px * 2)";
+    height: 40px;
+    font-size: 13pt;
+    padding: 0 20px;
+    background: rgba(0,0,0,0.8);
+    border: 0;
+    border-bottom: 2px solid @color-main-red;
+    color: @color-main-white;
+    &:focus {
+      outline: 0;
+    }
+  }
+  &_buttonpanel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 30px;
+    * {
+      text-transform: uppercase;
+      color: @color-main-white;
+      font-weight: bold;
+      font-size: 10pt;
+    }
+  }
+  &_filter * {
+    margin-right: 15px;
+  }
+  &_filter_btn {
+    background: @color-main-gray;
+    border: 0;
+    height: 25px;
+    border-radius: 3px;
+    padding: 0 15px;
+    cursor: pointer;
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      background: @color-main-light-gray;
+    }
+    &.active {
+      background: @color-main-red;
+      &:hover {
+        background: @color-main-light-red;
+      }
+    }
+  }
+  &_btn {
+    background: @color-main-red;
+    border: 0;
+    height: 30px;
+    border-radius: 3px;
+    padding: 0 50px;
+    cursor: pointer;
+    &:focus {
+      outline: 0;
+    }
+    &:hover {
+      background: @color-main-light-red;
+    }
+  }
+}

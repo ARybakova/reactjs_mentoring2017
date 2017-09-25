@@ -1,4 +1,4 @@
 import React from 'react';
-import { init } from './App.jsx';
+import { init } from './components/App.jsx';
 
 init();
