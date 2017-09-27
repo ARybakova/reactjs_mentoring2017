@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Movie = ({movie}) => (
-    <div className="movie">
+    <Link to={{ pathname: '/film/' + movie.show_title}} className="movie">
         <img src={movie.poster} className="movie_img"/>
         <div className="movie_info">
             <div className="movie_info_row1">
@@ -10,5 +11,5 @@ export const Movie = ({movie}) => (
             </div>
             <div className="movie_info_row2 movie_genre">{movie.category}</div>
         </div>
-    </div>
+    </Link>
 );

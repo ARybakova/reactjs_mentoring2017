@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const MovieHeader = ( {movie} ) => (
     <header className="header movie_header">
         <div className="header_top_bar">
             <span className="netflix_label">netflixroulette</span>
-            <button className="searchpage_btn">search</button>
+            <Link to={{ pathname: '/search' }} className="searchpage_btn">search</Link>
         </div>
         <div className="movie_details">
 

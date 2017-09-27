@@ -1,11 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
-export class SearchHeader extends React.Component {
+class SearchHeader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            parameter: "show_title",
-            value: ''
+            parameter: this.props.parameter,
+            value: this.props.value
         }
     }
     handleInputChange(event) {
@@ -13,15 +14,17 @@ export class SearchHeader extends React.Component {
             value: event.target.value
         });
     }
-    searchByTitle() {
+    setSearchParameter(parameter) {
         this.setState({
-            parameter: "show_title"
+            parameter: parameter
         });
     }
-    searchByDirector() {
-        this.setState({
-            parameter: "director"
-        });
+    goToSearch(event, value, parameter) {
+        event.preventDefault();
+        if (value !== '') {
+            this.props.history.push('/search?parameter=' + parameter + '&value=' + value);
+        }
+        else this.props.history.replace('/search');
     }
     render() {
         return (
@@ -30,13 +33,15 @@ export class SearchHeader extends React.Component {
                     <span className="netflix_label">netflixroulette</span>
                 </div>
                 <h1 className="search_title">find your movie</h1>
-                <form className="search_form" onSubmit={() => this.props.searchByParameter(this.state.value, this.state.parameter)}>
+                <form className="search_form" onSubmit={(event) => this.goToSearch(event, this.state.value, this.state.parameter)}>
                     <input className="search_field" placeholder="Your query" value={this.state.value} onChange={this.handleInputChange.bind(this)}/>
                     <div className="search_buttonpanel">
                         <div className="search_filter">
                             <span className="search_filter_title">search by</span>
-                            <button type="button" className={'search_filter_btn' + (this.state.parameter === "show_title" ? ' active' : '')} onClick={this.searchByTitle.bind(this)}>title</button>
-                            <button type="button" className={'search_filter_btn' + (this.state.parameter === "director" ? ' active' : '')} onClick={this.searchByDirector.bind(this)}>director</button>
+                            <button type="button" className={'search_filter_btn' + (this.state.parameter === "show_title" ? ' active' : '')}
+                                    onClick={() => this.setSearchParameter("show_title")}>title</button>
+                            <button type="button" className={'search_filter_btn' + (this.state.parameter === "director" ? ' active' : '')}
+                                    onClick={() => this.setSearchParameter("director")}>director</button>
                         </div>
                         <button type="submit" className="search_btn">search</button>
                     </div>
@@ -45,3 +50,4 @@ export class SearchHeader extends React.Component {
         );
     }
 }
+export default withRouter(SearchHeader)

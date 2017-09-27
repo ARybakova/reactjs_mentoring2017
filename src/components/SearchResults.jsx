@@ -5,41 +5,43 @@ export class SearchResults extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sortMethod: "sortByRelease",
-            data: this.props.data.slice().sort((a,b) => b.release_year - a.release_year )
+            sortMethod: "sortByRelease"
         }
     }
-    sortByRelease() {
+    setSortMethod(method) {
         this.setState({
-            sortMethod: "sortByRelease",
-            data: this.props.data.slice().sort((a,b) => b.release_year - a.release_year)
+            sortMethod: method
         });
     }
-    sortByRating() {
-        this.setState({
-            sortMethod: "sortByRating",
-            data: this.props.data.slice().sort((a,b) => b.rating - a.rating)
-        });
+    sortByMethod(arr) {
+        if (this.state.sortMethod === "sortByRelease") {
+            return arr.slice().sort((a,b) => b.release_year - a.release_year)
+        } else if (this.state.sortMethod === "sortByRating") {
+            return arr.slice().sort((a,b) => b.rating - a.rating)
+        }
     }
     render() {
+
+        let sortedItems = this.sortByMethod(this.props.data);
+
         return (
             <section className="results">
 
-                { this.state.data.length > 0 ? (
+                { sortedItems.length > 0 ? (
 
                     <div>
                         <div className="results_panel">
-                            <span className="results_title">{this.state.data.length} movies found</span>
+                            <span className="results_title">{sortedItems.length} movies found</span>
                             <div className="results_filter">
                                 <span className="results_filter_title">Sort by</span>
                                 <button className={'results_filter_btn' + (this.state.sortMethod === "sortByRelease" ? ' active' : '')}
-                                        onClick={this.sortByRelease.bind(this)}>release date</button>
+                                        onClick={() => this.setSortMethod("sortByRelease") }>release date</button>
                                 <button className={'results_filter_btn' + (this.state.sortMethod === "sortByRating" ? ' active' : '')}
-                                        onClick={this.sortByRating.bind(this)}>rating</button>
+                                        onClick={() => this.setSortMethod("sortByRating")}>rating</button>
                             </div>
                         </div>
                         <div className="results_items">
-                            {this.state.data.map((movie) => <Movie key={movie.show_id} movie={movie} />)}
+                            {sortedItems.map((movie) => <Movie key={movie.show_id} movie={movie} />)}
                         </div>
                     </div>
 
