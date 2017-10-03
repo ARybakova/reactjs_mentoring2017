@@ -1,6 +1,6 @@
 import React from 'react';
 import data from './../data.json';
-import SearchHeader from './SearchHeader.jsx';
+import { SearchHeaderWithRouter as SearchHeader } from './SearchHeader.jsx';
 import { SearchResults } from './SearchResults.jsx';
 import { Footer } from './Footer.jsx';
 import { NotFound } from './NotFound.jsx';

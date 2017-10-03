@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 class SearchHeader extends React.Component {
     constructor(props) {
@@ -50,4 +50,5 @@ class SearchHeader extends React.Component {
         );
     }
 }
-export default withRouter(SearchHeader)
+
+export const SearchHeaderWithRouter = withRouter(SearchHeader);

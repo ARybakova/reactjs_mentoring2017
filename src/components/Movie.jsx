@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Movie = ({movie}) => (
-    <Link to={{ pathname: '/film/' + movie.show_title}} className="movie">
+    <Link to={'/film/' + movie.show_title} className="movie">
         <img src={movie.poster} className="movie_img"/>
         <div className="movie_info">
             <div className="movie_info_row1">
