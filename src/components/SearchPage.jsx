@@ -1,5 +1,4 @@
 import React from 'react';
-import data from './../data.json';
 import { SearchHeaderWithRouter as SearchHeader } from './SearchHeader.jsx';
 import { SearchResults } from './SearchResults.jsx';
 import { Footer } from './Footer.jsx';
@@ -9,35 +8,37 @@ export class SearchPage extends React.Component {
     constructor(props) {
         super(props);
     }
-    searchByParameter(params, data) {
-        if (params.get('parameter') !== null && params.get('value') !== null) {
-            return data.filter( (a) => a[params.get('parameter')].toLowerCase().indexOf(params.get('value').toLowerCase()) !== -1 )
-        }
+
+    componentWillMount() {
+      if (this.props.location.search !== '') {
+        let searchParams = new URLSearchParams(this.props.location.search);
+        let parameter = searchParams.get('parameter');
+        let value = searchParams.get('value');
+        this.props.pageActions.setParameter(parameter);
+        this.props.pageActions.setValue(value);
+        this.props.pageActions.doSearch(parameter, value);
+      }
     }
+
     render() {
-        let searchResults;
-        let parameter;
-        let value;
+        const { parameter, results, sortMethod, value } = this.props.search;
+        const { doSearch, setParameter, setValue, setSortMethod, sortResults } = this.props.pageActions;
 
-        if (this.props.location.search !== '') {
-            let params = new URLSearchParams(this.props.location.search);
-            searchResults = this.searchByParameter(params, data);
-            parameter = params.get('parameter');
-            value = params.get('value');
-        }
-        else {
-            searchResults = [];
-        }
-
-        if (searchResults !== undefined) {
+        if (this.props.search.results !== undefined) {
             return (
                 <div className="page_container">
                     <SearchHeader
-                        parameter={parameter || "show_title"}
-                        value={value || ''}
+                        parameter={parameter}
+                        value={value}
+                        setParameter={setParameter}
+                        setValue={setValue}
+                        doSearch={doSearch}
                     />
                     <SearchResults
-                        data={searchResults}
+                        sortMethod={sortMethod}
+                        results={results}
+                        setSortMethod={setSortMethod}
+                        sortResults={sortResults}
                     />
                     <Footer/>
                 </div>

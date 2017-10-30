@@ -10,10 +10,10 @@ export class MovieResults extends React.Component {
             <section className="results">
                 <div>
                     <div className="results_panel">
-                        <span className="results_title">Films by {this.props.director}</span>
+                        <span className="results_title">Films by {this.props.movie.production_companies[0].name}</span>
                     </div>
                     <div className="results_items">
-                        {this.props.data.map((movie) => <Movie key={movie.show_id} movie={movie} />)}
+                        {this.props.results.map((movie) => <Movie key={movie.id} movie={movie} />)}
                     </div>
                 </div>
             </section>
