@@ -8,7 +8,7 @@ module.exports = {
 
     entry: {
         app: './index.js',
-        vendor: ["react", "react-dom"],
+        vendor: ["react", "react-dom", "babel-polyfill"],
         styles: './less/main.less'
     },
 

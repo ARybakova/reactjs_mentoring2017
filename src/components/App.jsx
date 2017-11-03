@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { withRouter, BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { SearchPage } from './SearchPage.jsx';
-import { MoviePage } from './MoviePage.jsx';
-import { NotFound } from './NotFound.jsx';
+import { SearchPage } from './SearchPage';
+import { MoviePage } from './MoviePage';
+import { NotFound } from './NotFound';
 
 import { createStore, bindActionCreators, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import { reducer } from '../reducers/reducer.js';
-import * as pageActions from '../actions/actions.js';
+import { reducer } from '../reducers/reducer';
+import * as pageActions from '../actions/actions';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 

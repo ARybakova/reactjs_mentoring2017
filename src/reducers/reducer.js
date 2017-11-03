@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { search } from './search.js'
-import { movie } from './movie.js'
+import { search } from './search'
+import { movie } from './movie'
 
 export const reducer = combineReducers({
   search,

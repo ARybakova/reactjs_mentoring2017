@@ -5,7 +5,7 @@ import {
   SET_VALUE,
   SET_SORT_METHOD,
   SORT_RESULTS
-} from '../constants/ActionTypes.js';
+} from '../constants/ActionTypes';
 
 const initialState = {
   results: [],

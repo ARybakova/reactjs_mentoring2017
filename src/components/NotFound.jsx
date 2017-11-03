@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Footer } from './Footer.jsx';
+import { Footer } from './Footer';
 
 export const NotFound = () => (
     <div className="page_container">

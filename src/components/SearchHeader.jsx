@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class SearchHeader extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
     handleInputChange(event) {
       this.props.setValue(event.target.value);
     }
@@ -21,6 +19,7 @@ class SearchHeader extends React.Component {
         else this.props.history.replace('/search');
         this.props.doSearch(parameter, value);
     }
+
     render() {
         return (
             <header className="header search_header">

@@ -1,23 +1,18 @@
 import React from 'react';
-import { SearchHeaderWithRouter as SearchHeader } from './SearchHeader.jsx';
-import { SearchResults } from './SearchResults.jsx';
-import { Footer } from './Footer.jsx';
-import { NotFound } from './NotFound.jsx';
+import { SearchHeaderWithRouter as SearchHeader } from './SearchHeader';
+import { SearchResults } from './SearchResults';
+import { Footer } from './Footer';
+import { NotFound } from './NotFound';
 
 export class SearchPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentWillMount() {
-      if (this.props.location.search !== '') {
-        let searchParams = new URLSearchParams(this.props.location.search);
-        let parameter = searchParams.get('parameter');
-        let value = searchParams.get('value');
-        this.props.pageActions.setParameter(parameter);
-        this.props.pageActions.setValue(value);
-        this.props.pageActions.doSearch(parameter, value);
-      }
+      let searchParams = new URLSearchParams(this.props.location.search);
+      let parameter = searchParams.get('parameter');
+      let value = searchParams.get('value');
+      this.props.pageActions.setParameter(parameter);
+      this.props.pageActions.setValue(value);
+      this.props.pageActions.doSearch(parameter, value);
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Movie = ({movie}) => ( //to check this and other strings
+export const Movie = ( {movie} ) => (
     <Link to={'/film/' + movie.title} className="movie">
         <img src={'https://image.tmdb.org/t/p/w342' + movie.poster_path} className="movie_img"/>
         <div className="movie_info">

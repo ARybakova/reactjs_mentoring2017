@@ -1,13 +1,11 @@
 import React from 'react';
-import { MovieHeader } from './MovieHeader.jsx';
-import { MovieResults } from './MovieResults.jsx';
-import { Footer } from './Footer.jsx';
-import { NotFound } from './NotFound.jsx';
+import { MovieHeader } from './MovieHeader';
+import { MovieResults } from './MovieResults';
+import { Footer } from './Footer';
+import { NotFound } from './NotFound';
 
 export class MoviePage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
     componentWillMount() {
       this.props.pageActions.getMovie(this.props.match.params.name);
     }

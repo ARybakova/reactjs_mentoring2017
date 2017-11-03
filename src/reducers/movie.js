@@ -3,7 +3,7 @@ import {
   GET_MOVIE_ERROR,
   GET_MOVIES_WITH_CO_SUCCESS,
   GET_MOVIES_WITH_CO_ERROR
-} from '../constants/ActionTypes.js';
+} from '../constants/ActionTypes';
 
 const initialState = {
   movie: {},

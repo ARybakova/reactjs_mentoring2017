@@ -1,10 +1,8 @@
 import React from 'react';
-import { Movie } from './Movie.jsx';
+import { Movie } from './Movie';
 
 export class SearchResults extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
     componentWillMount() {
       this.sortByMethod(this.props.results);
     }
@@ -15,6 +13,7 @@ export class SearchResults extends React.Component {
     sortByMethod(arr) {
         this.props.sortResults(arr);
     }
+
     render() {
 
         return (
