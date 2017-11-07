@@ -9,20 +9,19 @@ export const MovieHeader = ( {movie} ) => (
         </div>
         <div className="movie_details">
 
-            <img src={movie.poster} className="movie_details_img"/>
+            <img src={'https://image.tmdb.org/t/p/w342' + movie.poster_path} className="movie_details_img"/>
             <div className="movie_details_info">
                 <div className="movie_details_title_container">
-                    <div className="movie_details_title">{movie.show_title}</div>
-                    <div className="movie_details_rating">{movie.rating}</div>
+                    <div className="movie_details_title">{movie.title}</div>
+                    <div className="movie_details_rating">{movie.vote_average}</div>
                 </div>
-                <div className="movie_details_genre">{movie.category}</div>
+                <div className="movie_details_genre">{movie.genres[0].name}</div>
                 <div className="movie_details_release_container">
-                    <div className="movie_details_release">{movie.release_year}</div>
-                    <div className="movie_details_duration">{movie.runtime}</div>
+                    <div className="movie_details_release">Released: {movie.release_date}</div>
+                    <div className="movie_details_duration">{movie.runtime} mins</div>
                 </div>
-                <div className="movie_details_description">{movie.summary}</div>
-                <div className="movie_details_director">Director: {movie.director}</div>
-                <div className="movie_details_cast">Cast: {movie.show_cast}</div>
+                <div className="movie_details_description">{movie.overview}</div>
+                <div className="movie_details_director">Company: {movie.production_companies[0].name}</div>
             </div>
         </div>
     </header>
