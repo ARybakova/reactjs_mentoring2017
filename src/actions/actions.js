@@ -29,6 +29,11 @@ export function doSearch(parameter, value) {
         })
       }
     }
+    else {
+      dispatch({
+        type: types.GET_SEARCH_ERROR
+      })
+    }
   }
 }
 
