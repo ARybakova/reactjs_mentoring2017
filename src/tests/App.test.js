@@ -4,6 +4,13 @@ import { shallow, mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
 import 'url-search-params-polyfill';
 
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import * as actions from '../actions/actions';
+import * as types from '../constants/ActionTypes';
+import { reducer } from '../reducers/reducer';
+import fetchMock from 'fetch-mock';
+
 import { Footer } from '../components/Footer';
 import { Movie } from '../components/Movie';
 import { MovieHeader } from '../components/MovieHeader';
@@ -136,6 +143,92 @@ const searchData = {
   value: "kill",
   sortMethod: "sortByRelease"
 };
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('actions', () => {
+  afterEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
+  });
+
+  const data = {
+    "results": [
+      {
+        "vote_count": 4265,
+        "id": 393,
+        "title": "Kill Bill: Vol. 2",
+        "popularity": 13.720514
+      }
+    ]};
+
+  it('creates GET_SEARCH_SUCCESS when movies search has been done', () => {
+    fetchMock
+    .getOnce('*', data);
+
+    const expectedActions = [
+      { type: types.GET_SEARCH_SUCCESS, payload: data.results } ];
+    const store = mockStore({ searchData: { results: [] } });
+
+    return store.dispatch(actions.doSearch("title", "value")).then(() => {
+      expect(store.getActions()).toEqual(expectedActions)
+    })
+  });
+
+  it('creates GET_SEARCH_ERROR when search value does not exist', () => {
+    fetchMock
+      .getOnce('*', {});
+
+    const expectedActions = [
+      { type: types.GET_SEARCH_ERROR } ];
+    const store = mockStore({});
+
+    return store.dispatch(actions.doSearch("title", undefined)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions)
+    })
+  });
+});
+
+describe('reducer', () => {
+  const initialState = {
+    search: {
+      results: [],
+      parameter: "title",
+      value: "",
+      sortMethod: "sortByRelease"
+    },
+    movie: {
+      movie: {},
+      results: []
+    }
+  };
+  it('should return the initial state', () => {
+    expect(reducer(undefined, {})).toEqual(initialState)
+  });
+
+  it('SET_PARAMETER should return correct state', () => {
+    expect(
+      reducer([], {
+        type: types.SET_PARAMETER,
+        payload: "director"
+      })
+    ).toEqual({
+      search: {
+        ...initialState.search,
+        parameter: "director"
+      },
+      movie: initialState.movie
+    });
+
+    expect(
+      reducer([], {
+        type: types.SET_PARAMETER,
+        payload: ""
+      })
+    ).toEqual(initialState);
+  })
+});
 
 describe('<SearchPage/>', () => {
   // it returns error without any obvious reasons - it can not find property "genre_ids" at Movie.jsx:12:115),
