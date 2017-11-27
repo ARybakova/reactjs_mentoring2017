@@ -4,14 +4,11 @@ import { Movie } from './Movie';
 export class SearchResults extends React.Component {
 
     componentWillMount() {
-      this.sortByMethod(this.props.results);
+      this.props.sortResults(this.props.results);
     }
     setSortMethod(method) {
         this.props.setSortMethod(method);
-        this.sortByMethod(this.props.results);
-    }
-    sortByMethod(arr) {
-        this.props.sortResults(arr);
+        this.props.sortResults(this.props.results);
     }
 
     render() {

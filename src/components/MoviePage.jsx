@@ -4,14 +4,18 @@ import { MovieResults } from './MovieResults';
 import { Footer } from './Footer';
 import { NotFound } from './NotFound';
 
-export class MoviePage extends React.Component {
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as pageActions from '../actions/actions';
 
-    componentWillMount() {
+class MoviePage extends React.Component {
+
+    componentDidMount() {
       this.props.pageActions.getMovie(this.props.match.params.name);
     }
 
     render() {
-        const { movie, results } = this.props.movie;
+        const { movie, results } = this.props;
 
         if (Object.keys(movie).length !== 0) {
             return (
@@ -32,3 +36,19 @@ export class MoviePage extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    results: state.movie.results,
+    movie:  state.movie.movie
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    pageActions: bindActionCreators(pageActions, dispatch)
+  }
+}
+
+export const MoviePageConnected = connect(mapStateToProps, mapDispatchToProps)(MoviePage);

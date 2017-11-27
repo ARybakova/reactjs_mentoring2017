@@ -1,34 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter, BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { SearchPage } from './SearchPage';
-import { MoviePage } from './MoviePage';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { SearchPageConnected as SearchPage } from './SearchPage';
+import { MoviePageConnected as MoviePage } from './MoviePage';
 import { NotFound } from './NotFound';
-
-import { createStore, bindActionCreators, applyMiddleware } from 'redux';
-import { Provider, connect } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import { reducer } from '../reducers/reducer';
-import * as pageActions from '../actions/actions';
-
-const store = createStore(reducer, applyMiddleware(thunk));
 
 class App extends React.Component {
 
     render() {
-
-      const { search, movie, pageActions } = this.props;
 
       return (
             <div className="main">
               <Switch>
                 <Redirect exact from="/" to="/search"/>
 
-                <Route path="/search" render={(props) => <SearchPage {...props} search={search} pageActions={pageActions}/>}>
-                </Route>
+                <Route path="/search" component={SearchPage}/>
 
-                <Route path="/film/:name" render={(props) => <MoviePage {...props} movie={movie} pageActions={pageActions}/>}/>
+                <Route path="/film/:name" component={MoviePage}/>
 
                 <Route path="*" component={NotFound} />
               </Switch>
@@ -37,27 +24,4 @@ class App extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-  return {
-    search: state.search,
-    movie: state.movie
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    pageActions: bindActionCreators(pageActions, dispatch)
-  }
-}
-
-const AppConnected = withRouter(connect(mapStateToProps, mapDispatchToProps)(App)); //because of https://github.com/ReactTraining/react-router/issues/4671
-
-export const init = function() {
-    ReactDOM.render((
-        <Provider store={store}>
-            <Router>
-                <AppConnected/>
-            </Router>
-        </Provider>
-    ), document.getElementById('app'));
-};
+export const AppWithRouter = withRouter(App); //because of https://github.com/ReactTraining/react-router/issues/4671

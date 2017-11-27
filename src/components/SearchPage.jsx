@@ -4,9 +4,13 @@ import { SearchResults } from './SearchResults';
 import { Footer } from './Footer';
 import { NotFound } from './NotFound';
 
-export class SearchPage extends React.Component {
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as pageActions from '../actions/actions';
 
-    componentWillMount() {
+class SearchPage extends React.Component {
+
+    componentDidMount() {
       let searchParams = new URLSearchParams(this.props.location.search);
       let parameter = searchParams.get('parameter');
       let value = searchParams.get('value');
@@ -16,10 +20,10 @@ export class SearchPage extends React.Component {
     }
 
     render() {
-        const { parameter, results, sortMethod, value } = this.props.search;
+        const { parameter, results, sortMethod, value } = this.props;
         const { doSearch, setParameter, setValue, setSortMethod, sortResults } = this.props.pageActions;
 
-        if (this.props.search.results !== undefined) {
+        if (results !== undefined) {
             return (
                 <div className="page_container">
                     <SearchHeader
@@ -44,3 +48,21 @@ export class SearchPage extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    ...ownProps,
+    results: state.search.results,
+    parameter: state.search.parameter,
+    value: state.search.value,
+    sortMethod: state.search.sortMethod
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    pageActions: bindActionCreators(pageActions, dispatch)
+  }
+}
+
+export const SearchPageConnected = connect(mapStateToProps, mapDispatchToProps)(SearchPage);
